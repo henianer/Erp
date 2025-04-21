@@ -13,70 +13,71 @@ import MenuItem from '@/layout/menu/MenuItem.vue';
 import MenuLogo from '@/layout/menu/MenuLogo.vue';
 import { useRoute } from 'vue-router';
 import { menuStore } from '@/store/menu';
+import { routerConfig } from '@/config/router';
 // 定义菜单数据
 let menuList = reactive([
     {
-        path: '/dashboard',
-        component: () => import('@/views/dashboard/Index.vue'),
-        name: 'dashboard',
+        path: routerConfig.dashboard.path,
+        component: routerConfig.dashboard.component,
+        name: routerConfig.dashboard.name,
         meta: {
-            title: '首页',
-            icon: 'House',
-            roles: ['system:dashboard']
+            title: routerConfig.dashboard.title,
+            icon: routerConfig.dashboard.icon,
+            roles: routerConfig.dashboard.roles,
         },
     },
     {
-        path: '/company',
-        component: 'Layout',
-        name: 'company',
+        path: routerConfig.company.path,
+        component: routerConfig.company.component,
+        name: routerConfig.company.name,
         meta: {
-            title: '公司管理',
-            icon: 'Star',
-            roles: ['company:manage']
+            title: routerConfig.company.title,
+            icon: routerConfig.company.icon,
+            roles: routerConfig.company.roles,
         },
         children: [
             {
-                path: "/company/companyList",
-                name: "companyList",
+                path: routerConfig.companyList.path,
+                name: routerConfig.companyList.name,
                 meta: {
-                    title: "公司列表",
-                    icon: "Operation",
-                    roles: ["company:companyList"],
+                    title: routerConfig.companyList.title,
+                    icon: routerConfig.companyList.icon,
+                    roles: routerConfig.companyList.roles,
                 }
             }
         ]
     },
     {
-        path: '/system',
-        component: 'Layout',
-        name: 'system',
+        path: routerConfig.system.path,
+        component: routerConfig.system.component,
+        name: routerConfig.system.name,
         meta: {
-            title: '系统管理',
-            icon: 'Setting',
-            roles: ['system:manage']
+            title: routerConfig.system.title,
+            icon: routerConfig.system.icon,
+            roles: routerConfig.system.roles,
         },
         children: [
             {
-                path: "/system/userList",
-                name: "userList",
+                path: routerConfig.userList.path,
+                name: routerConfig.userList.name,
                 meta: {
-                    title: "用户列表",
-                    icon: "User",
-                    roles: ["system:userList"],
+                    title: routerConfig.userList.title,
+                    icon: routerConfig.userList.icon,
+                    roles: routerConfig.userList.roles,
                 }
             },
             {
-                path: "/system/roleList",
-                name: "roleList",
+                path: routerConfig.roleList.path,
+                name: routerConfig.roleList.name,
                 meta: {
-                    title: "角色列表",
-                    icon: "CollectionTag",
-                    roles: ["system:roleList"],
+                    title: routerConfig.roleList.title,
+                    icon: routerConfig.roleList.icon,
+                    roles: routerConfig.roleList.roles,
                 }
             }
         ]
     }
-])
+]);
 // 获取菜单收缩状态
 const store = menuStore();
 const isCollapse = computed(() => {

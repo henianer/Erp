@@ -20,6 +20,7 @@
 </template>
 
 <script setup lang="ts">
+import { routerConfig } from '@/config/router';
 import { tabsStore } from '@/store/tabs';
 import { useRoute, useRouter } from 'vue-router';
 
@@ -30,6 +31,7 @@ const tabStore = tabsStore();
 const closeCurrent = () => {
     const tabs = tabStore.getTabsList;
     let targetPath = route.path;
+    if (targetPath === routerConfig.dashboard.path) return;
     let activePath = route.path;
     if (activePath === targetPath) {
         tabs.forEach((tab, index) => {
@@ -62,7 +64,7 @@ const closeLeft = () => {
     const index = tabStore.getTabsList.findIndex(tab => tab && tab.path === activePath);
     const tabs = tabStore.getTabsList;
     if (index > 0) {
-        const newTabs = tabs.slice(index);
+        const newTabs = [tabs[0]].concat(tabs.slice(index));
         tabStore.setTabsList(newTabs);
     }
 }

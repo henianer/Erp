@@ -4,6 +4,7 @@ import { defineStore } from "pinia";
 export type TTab = {
     title: string;
     path: string;
+    closable: boolean; // 是否可关闭
 }
 // 定义State数据类型
 export type TTabState = {

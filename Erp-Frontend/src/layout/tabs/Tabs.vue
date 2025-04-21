@@ -1,13 +1,15 @@
 <!-- 选项卡布局 -->
 <template>
-    <el-tabs v-model="activeTab" type="card" class="demo-tabs" closable @tab-remove="remove" @tab-click="click">
-        <el-tab-pane v-for="item in tabsList" :key="item.path" :label="item.title" :name="item.path">
+    <el-tabs v-model="activeTab" type="card" class="demo-tabs" @tab-remove="remove" @tab-click="click">
+        <el-tab-pane v-for="item in tabsList" :key="item.path" :closable="item.closable" :label="item.title"
+            :name="item.path">
             <!-- {{ item.title }} -->
         </el-tab-pane>
     </el-tabs>
 </template>
 
 <script setup lang="ts">
+import { routerConfig } from '@/config/router';
 import { tabsStore, type TTab } from '@/store/tabs';
 import type { TabsPaneContext } from 'element-plus';
 import { computed, onMounted, ref, watch } from 'vue';
@@ -55,6 +57,7 @@ const add = () => {
     const tab: TTab = {
         path,
         title: meta.title as string,
+        closable: path === routerConfig.dashboard.path ? false : true,
     }
     store.addTab(tab);
 }

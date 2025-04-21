@@ -1,73 +1,75 @@
+import { routerConfig } from "@/config/router";
 import { createRouter, createWebHistory, type RouteRecordRaw } from "vue-router";
-import Layout from "@/layout/Index.vue";
 
 const routes: RouteRecordRaw[] = [
     {
-        path: "/",
-        component: Layout,
-        redirect: "/dashboard",
+        path: routerConfig.default.path,
+        component: routerConfig.default.component,
+        redirect: routerConfig.default.redirect,
         children: [
             {
-                path: "/dashboard",
-                name: "dashboard",
-                component: () => import("@/views/dashboard/Index.vue"),
+                path: routerConfig.dashboard.path,
+                name: routerConfig.dashboard.name,
+                component: routerConfig.dashboard.component,
                 meta: {
-                    title: "首页",
-                    icon: "#iconDashboard",
+                    title: routerConfig.dashboard.title,
+                    icon: routerConfig.dashboard.icon,
                 }
             }
         ]
     },
     {
-        path: "/system",
-        component: Layout,
-        name: "system",
+        path: routerConfig.system.path,
+        component: routerConfig.system.component,
+        redirect: routerConfig.system.redirect,
+        name: routerConfig.system.name,
         meta: {
-            title: "系统管理",
-            icon: "Setting",
-            roles: ["system:manage"],
+            title: routerConfig.system.title,
+            icon: routerConfig.system.icon,
+            roles: routerConfig.system.roles,
         },
         children: [
             {
-                path: "/system/userList",
-                name: "userList",
-                component: () => import("@/views/system/user/UserList.vue"),
+                path: routerConfig.userList.path,
+                name: routerConfig.userList.name,
+                component: routerConfig.userList.component,
                 meta: {
-                    title: "用户列表",
-                    icon: "User",
-                    roles: ["system:userList"],
+                    title: routerConfig.userList.title,
+                    icon: routerConfig.userList.icon,
+                    roles: routerConfig.userList.roles,
                 }
             },
             {
-                path: "/system/roleList",
-                name: "roleList",
-                component: () => import("@/views/system/role/RoleList.vue"),
+                path: routerConfig.roleList.path,
+                name: routerConfig.roleList.name,
+                component: routerConfig.roleList.component,
                 meta: {
-                    title: "角色列表",
-                    icon: "User",
-                    roles: ["system:roleList"],
+                    title: routerConfig.roleList.title,
+                    icon: routerConfig.roleList.icon,
+                    roles: routerConfig.roleList.roles,
                 }
             }
         ]
     },
     {
-        path: "/company",
-        component: Layout,
-        name: "company",
+        path: routerConfig.company.path,
+        component: routerConfig.company.component,
+        name: routerConfig.company.name,
+        redirect: routerConfig.company.redirect,
         meta: {
-            title: "公司管理",
-            icon: "House",
-            roles: ["company:manage"],
+            title: routerConfig.company.title,
+            icon: routerConfig.company.icon,
+            roles: routerConfig.company.roles,
         },
         children: [
             {
-                path: "/company/companyList",
-                name: "companyList",
-                component: () => import("@/views/company/CompanyList.vue"),
+                path: routerConfig.companyList.path,
+                name: routerConfig.companyList.name,
+                component: routerConfig.companyList.component,
                 meta: {
-                    title: "公司列表",
-                    icon: "House",
-                    roles: ["company:companyList"],
+                    title: routerConfig.companyList.title,
+                    icon: routerConfig.companyList.icon,
+                    roles: routerConfig.companyList.roles,
                 }
             }
         ]
