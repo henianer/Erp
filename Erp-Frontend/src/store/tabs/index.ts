@@ -1,15 +1,5 @@
+import type { TTab, TTabState } from "@/type/baseType";
 import { defineStore } from "pinia";
-
-// 定义选项卡数据类型 名称和路由
-export type TTab = {
-    title: string;
-    path: string;
-    closable: boolean; // 是否可关闭
-}
-// 定义State数据类型
-export type TTabState = {
-    tabsList: TTab[];
-}
 
 export const tabsStore = defineStore('tabsStore', {
     state: (): TTabState => {

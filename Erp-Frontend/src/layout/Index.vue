@@ -1,3 +1,4 @@
+<!-- 页面总布局 -->
 <template>
     <el-container class="home-container">
         <el-aside width="auto" class="left-menu">
