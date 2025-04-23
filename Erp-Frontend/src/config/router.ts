@@ -2,13 +2,21 @@ import Layout from "@/layout/Index.vue";
 
 /** 路由配置 */
 export const routerConfig = {
-    // 主页
+    // 默认路由
     default: {
         path: "/",
         title: "默认",
         component: Layout,
         redirect: "/dashboard",
     },
+    // 登陆页面
+    login: {
+        path: "/login",
+        title: "登陆",
+        component: () => import("@/views/login/Login.vue"),
+        name: "login",
+    },
+    // 主页
     dashboard: {
         path: "/dashboard",
         component: () => import("@/views/dashboard/Index.vue"),

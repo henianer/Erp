@@ -10,7 +10,8 @@
 
 <script setup lang="ts">
 import { routerConfig } from '@/config/router';
-import { tabsStore, type TTab } from '@/store/tabs';
+import { tabsStore } from '@/store/tabs';
+import type { TTab } from '@/type/baseType';
 import type { TabsPaneContext } from 'element-plus';
 import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';

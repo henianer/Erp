@@ -3,6 +3,11 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from "vue-router"
 
 const routes: RouteRecordRaw[] = [
     {
+        path: routerConfig.login.path,
+        name: routerConfig.login.name,
+        component: routerConfig.login.component,
+    },
+    {
         path: routerConfig.default.path,
         component: routerConfig.default.component,
         redirect: routerConfig.default.redirect,

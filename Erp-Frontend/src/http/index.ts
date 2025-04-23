@@ -1,9 +1,11 @@
+import { userStore } from "@/store/user";
 import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse, type InternalAxiosRequestConfig } from "axios";
 import { ElMessage } from "element-plus";
 
 const httpConfig = {
     baseURL: 'http://159.75.174.131:8080', // 请求接口的地址
     timeout: 10000, // 请求超时时间
+    // withCredentials: true, // 是否允许携带凭证
 }
 
 export interface IHttpResult<T = any> {
@@ -30,9 +32,12 @@ class Http {
         this.instance.interceptors.request.use(
             (config: InternalAxiosRequestConfig) => {
                 // 请求头携带token
-                let token = 'test_token';
+                const store = userStore();
+                let token = store.getUserData.token || '';
+                // console.log(config);
                 if (token && config && token.length > 0) {
-                    config.headers.token = token;
+                    config.headers.Authorization = token;
+                    // config.data.token = token;
                 }
                 return config;
             },
@@ -48,10 +53,11 @@ class Http {
                 // 处理响应数据
                 let code = response.data.code;
                 if (code === 200) {
+                    ElMessage.success(response.data.message);
                     return response.data;
                 } else {
-                    // let message = response.data.message || '服务器异常';
-                    // ElMessage.error(message);
+                    let message = response.data.message || '服务器异常';
+                    ElMessage.error(message);
                     return Promise.reject(response.data);
                 }
             },
