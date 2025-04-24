@@ -58,21 +58,21 @@ let menuList = reactive([
         },
         children: [
             {
-                path: routerConfig.userList.path,
-                name: routerConfig.userList.name,
+                path: routerConfig.userManage.path,
+                name: routerConfig.userManage.name,
                 meta: {
-                    title: routerConfig.userList.title,
-                    icon: routerConfig.userList.icon,
-                    roles: routerConfig.userList.roles,
+                    title: routerConfig.userManage.title,
+                    icon: routerConfig.userManage.icon,
+                    roles: routerConfig.userManage.roles,
                 }
             },
             {
-                path: routerConfig.roleList.path,
-                name: routerConfig.roleList.name,
+                path: routerConfig.roleManage.path,
+                name: routerConfig.roleManage.name,
                 meta: {
-                    title: routerConfig.roleList.title,
-                    icon: routerConfig.roleList.icon,
-                    roles: routerConfig.roleList.roles,
+                    title: routerConfig.roleManage.title,
+                    icon: routerConfig.roleManage.icon,
+                    roles: routerConfig.roleManage.roles,
                 }
             }
         ]

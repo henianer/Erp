@@ -56,8 +56,9 @@ const onSubmit = () => {
     form.value?.validate(async (valid) => {
         if (valid) {
             let res = await login(loginModel);
-            if (res && res.code === 200) {
+            if (res) {
                 let data = res.data;
+                ElMessage.success(data.message || data.msg);
                 store.setUserData({
                     userId: data.user.id,
                     username: data.user.username,
@@ -66,7 +67,7 @@ const onSubmit = () => {
                     gender: data.user.gender,
                     nickname: data.user.name
                 });
-                router.push({ path: routerConfig.dashboard.path });
+                router.push({ path: routerConfig.home.path });
             }
         }
     })

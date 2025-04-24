@@ -8,9 +8,9 @@ const routes: RouteRecordRaw[] = [
         component: routerConfig.login.component,
     },
     {
-        path: routerConfig.default.path,
-        component: routerConfig.default.component,
-        redirect: routerConfig.default.redirect,
+        path: routerConfig.home.path,
+        component: routerConfig.home.component,
+        redirect: routerConfig.home.redirect,
         children: [
             {
                 path: routerConfig.dashboard.path,
@@ -20,8 +20,14 @@ const routes: RouteRecordRaw[] = [
                     title: routerConfig.dashboard.title,
                     icon: routerConfig.dashboard.icon,
                 }
-            }
+            },
         ]
+    },
+    {
+        path: routerConfig.default.path,
+        // component: routerConfig.default.component,
+        redirect: routerConfig.default.redirect,
+        children: []
     },
     {
         path: routerConfig.system.path,
@@ -35,23 +41,23 @@ const routes: RouteRecordRaw[] = [
         },
         children: [
             {
-                path: routerConfig.userList.path,
-                name: routerConfig.userList.name,
-                component: routerConfig.userList.component,
+                path: routerConfig.userManage.path,
+                name: routerConfig.userManage.name,
+                component: routerConfig.userManage.component,
                 meta: {
-                    title: routerConfig.userList.title,
-                    icon: routerConfig.userList.icon,
-                    roles: routerConfig.userList.roles,
+                    title: routerConfig.userManage.title,
+                    icon: routerConfig.userManage.icon,
+                    roles: routerConfig.userManage.roles,
                 }
             },
             {
-                path: routerConfig.roleList.path,
-                name: routerConfig.roleList.name,
-                component: routerConfig.roleList.component,
+                path: routerConfig.roleManage.path,
+                name: routerConfig.roleManage.name,
+                component: routerConfig.roleManage.component,
                 meta: {
-                    title: routerConfig.roleList.title,
-                    icon: routerConfig.roleList.icon,
-                    roles: routerConfig.roleList.roles,
+                    title: routerConfig.roleManage.title,
+                    icon: routerConfig.roleManage.icon,
+                    roles: routerConfig.roleManage.roles,
                 }
             }
         ]

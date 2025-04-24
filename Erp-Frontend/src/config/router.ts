@@ -6,8 +6,8 @@ export const routerConfig = {
     default: {
         path: "/",
         title: "默认",
-        component: Layout,
-        redirect: "/dashboard",
+        // component: Layout,
+        redirect: "/login",
     },
     // 登陆页面
     login: {
@@ -17,6 +17,13 @@ export const routerConfig = {
         name: "login",
     },
     // 主页
+    home: {
+        path: "/home",
+        title: "主页",
+        component: Layout,
+        redirect: "/dashboard",
+    },
+    // dashboard
     dashboard: {
         path: "/dashboard",
         component: () => import("@/views/dashboard/Index.vue"),
@@ -50,23 +57,23 @@ export const routerConfig = {
         title: "系统管理",
         icon: "Setting",
         name: "system",
-        redirect: "/system/userList",
+        redirect: "/system/userManage",
         roles: ["system:manage"],
     },
-    userList: {
-        path: "/system/userList",
-        component: () => import("@/views/system/user/UserList.vue"),
-        title: "用户列表",
+    userManage: {
+        path: "/system/userManage",
+        component: () => import("@/views/system/user/UserManage.vue"),
+        title: "用户管理",
         icon: "User",
-        name: "userList",
-        roles: ["system:userList"],
+        name: "userManage",
+        roles: ["system:userManage"],
     },
-    roleList: {
-        path: "/system/roleList",
-        component: () => import("@/views/system/role/RoleList.vue"),
-        title: "角色列表",
+    roleManage: {
+        path: "/system/roleManage",
+        component: () => import("@/views/system/role/RoleManage.vue"),
+        title: "角色管理",
         icon: "User",
-        name: "roleList",
-        roles: ["system:roleList"],
+        name: "roleManage",
+        roles: ["system:roleManage"],
     },
 }

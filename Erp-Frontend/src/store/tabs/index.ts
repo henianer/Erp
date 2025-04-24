@@ -1,3 +1,4 @@
+import { routerConfig } from "@/config/router";
 import type { TTab, TTabState } from "@/type/baseType";
 import { defineStore } from "pinia";
 
@@ -17,7 +18,7 @@ export const tabsStore = defineStore('tabsStore', {
         addTab(tab: TTab) {
             const isExist = this.tabsList.some(item => item && item.path === tab.path);
             if (!isExist) {
-                if (tab.path === '/dashboard') {
+                if (tab.path === routerConfig.dashboard.path) {
                     this.tabsList.unshift(tab);
                 }
                 else this.tabsList.push(tab);
@@ -26,7 +27,7 @@ export const tabsStore = defineStore('tabsStore', {
         // 覆盖选项卡
         setTabsList(tabsList: TTab[]) {
             // 将首页放在第一个
-            const index = tabsList.findIndex((item) => item && item.path === '/dashboard');
+            const index = tabsList.findIndex((item) => item && item.path === routerConfig.dashboard.path);
             if (index >= 0) {
                 [tabsList[0], tabsList[index]] = [tabsList[index], tabsList[0]];
             }

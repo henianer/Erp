@@ -1,7 +1,8 @@
+import type { TUserData } from "@/type/baseType";
 import { defineStore } from "pinia";
 
 export const userStore = defineStore('userStore', {
-    state: () => {
+    state: (): { userData: TUserData } => {
         return {
             userData: {
                 userId: '',
@@ -19,14 +20,7 @@ export const userStore = defineStore('userStore', {
         }
     },
     actions: {
-        setUserData(data: {
-            userId: string;
-            nickname: string;
-            gender: number;
-            username: string;
-            token: string;
-            tokenType: string;
-        }) {
+        setUserData(data: TUserData) {
             this.userData = data;
         }
     },

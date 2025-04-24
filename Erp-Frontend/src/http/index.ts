@@ -52,11 +52,10 @@ class Http {
             (response: AxiosResponse) => {
                 // 处理响应数据
                 let code = response.data.code;
-                if (code === 200) {
-                    ElMessage.success(response.data.message);
+                if (code === 200 || code === 0) {
                     return response.data;
                 } else {
-                    let message = response.data.message || '服务器异常';
+                    let message = response.data.message || response.data.msg || '服务器异常';
                     ElMessage.error(message);
                     return Promise.reject(response.data);
                 }

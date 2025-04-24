@@ -1,5 +1,20 @@
 // 类型定义
 
+/** 用户数据类型 */
+export type TUserData = {
+    avatar?: string; // 头像
+    gender?: number, // 性别
+    nickname?: string; // 昵称
+    userId?: string; // 用户ID
+    username?: string; // 用户名
+    phone?: string; // 手机号
+    token?: string; // token
+    tokenType?: string; // token类型
+    password?: string; // 密码
+    confirmPassword?: string; // 确认密码
+    roles?: string[]; // 角色
+}
+
 /** 选项卡数据类型 */
 export type TTab = {
     title: string; // 选项卡标题

@@ -10,6 +10,7 @@ export default defineConfig({
     port: 1023, // 端口
     hmr: true, // 热更新
     open: true, // 自动打开浏览器
+    // open: '/login', // 自动打开浏览器
   },
   resolve: {
     alias: {
